@@ -3,12 +3,16 @@ package view
 import contrib.ringui.header.ringHeader
 import contrib.ringui.header.ringLogo
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
 import kotlinx.css.padding
 import kotlinx.css.px
 import model.Post
+import model.User
 import react.*
 import services.PostService
+import services.UserService
 import styled.StyleSheet
 import styled.css
 import styled.styledA
@@ -33,6 +37,7 @@ interface ApplicationProps: RProps {
 
 class ApplicationState: RState {
     var posts: List<Post> = emptyList()
+    var users: Map<Int, User> = emptyMap()
 }
 
 class ApplicationComponent: RComponent<ApplicationProps, ApplicationState>() {
@@ -45,11 +50,23 @@ class ApplicationComponent: RComponent<ApplicationProps, ApplicationState>() {
 
     override fun componentDidMount() {
         val postService = PostService(coroutineContext)
+        val userService = UserService(coroutineContext)
 
         props.coroutineScope.launch {
             val posts = postService.getPosts()
             setState {
                 this.posts += posts
+            }
+
+            // Parallel coroutines execution example
+            val userIds = posts.map { it.userId }.toSet()
+            val users = userIds
+                .map { async { userService.getUser(it) } }
+                .awaitAll()
+                .toSet()
+
+            setState {
+                this.users = users.associateBy { it.id }
             }
         }
     }
@@ -81,7 +98,7 @@ class ApplicationComponent: RComponent<ApplicationProps, ApplicationState>() {
                     css {
                         +ApplicationStyles.post
                     }
-                    postView(post)
+                    postView(post, state.users[post.userId])
                 }
             }
         }
