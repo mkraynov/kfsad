@@ -82,14 +82,14 @@ fun Application.main() {
                         id = "react-app"
                         +"Loading..."
                     }
-                    script(src = "/client.js") {
+                    script(src = "/kotlin-full-stack-application-demo-client.js") {
                     }
                 }
             }
         }
 
         static("/") {
-            files("../client/build/lib")
+            files("../client/build/libs")
         }
 
         route("/api") {
