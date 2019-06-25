@@ -1,6 +1,9 @@
 # kotlin-full-stack-application-demo
 
 A full-stack demo application written in Kotlin for [JetBrains Night Moscow 2019](https://info.jetbrains.com/jetbrains-night-moscow-2019).
+Presentation [video](https://www.youtube.com/watch?v=SsREyo6DlTg) in Russian.
+
+**See kotlin-1.3.40-preview** branch for Kotlin 1.3.40 update with new tooling and multi-module project structure.
 
 ## Description
 
