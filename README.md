@@ -1,6 +1,7 @@
 # kotlin-full-stack-application-demo
 
 A full-stack demo application written in Kotlin for [JetBrains Night Moscow 2019](https://info.jetbrains.com/jetbrains-night-moscow-2019).
+Presentation [video](https://www.youtube.com/watch?v=SsREyo6DlTg) in Russian.
 
 ## Description
 
@@ -24,15 +25,11 @@ This application has no error handling and has very limited RPC serialization. I
 
 ### Useful Gradle tasks
 
-`gradle run` runs webpack-dev-server and the Ktor application. You can find logs at `build/logs`.
-
-`gradle run -t` runs continuous build (watch mode).
-
 `gradle build` to create static files bundle.
 
 `gradle :client:run` runs webpack-dev-server only.
 
-`gradle :server:run` runs the Ktor application only.
+`gradle :server:run` runs the Ktor application only. You may want to build static files bundle with `gradle build` or `gradle :client:browserWebpack` before running Ktor application only in order to serve static.
 
 `gradle :server:test` to run common and JVM tests with JUnit.
 
