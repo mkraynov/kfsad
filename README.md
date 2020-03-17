@@ -1,9 +1,9 @@
+**WARNING** This repo is frozen to be in touch with original presentation. There is [a new repository under Kotlin](https://github.com/Kotlin/kotlin-full-stack-application-demo) with actual Kotlin version and Kotlin/JS Gradle plugin.
+
 # kotlin-full-stack-application-demo
 
 A full-stack demo application written in Kotlin for [JetBrains Night Moscow 2019](https://info.jetbrains.com/jetbrains-night-moscow-2019).
 Presentation [video](https://www.youtube.com/watch?v=SsREyo6DlTg) in Russian.
-
-**See kotlin-1.3.40-preview** branch for Kotlin 1.3.40 update with new tooling and multi-module project structure.
 
 ## Description
 
